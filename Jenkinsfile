@@ -1,26 +1,29 @@
 pipeline {
     agent any
+
     tools {
-        jdk 'Jdk-17'    // Must match the name configured in Global Tools
-        maven 'mvn-3.6'  // Must match the name configured in Global Tools
+        jdk 'jdk-17'
+        maven 'mvn-3.6'
     }
 
     stages {
 
-       stage('mvn compile') {
+        stage('Maven Compile') {
             steps {
                 sh 'mvn compile'
             }
         }
-       stage('mvn test') {
+
+        stage('Maven Test') {
             steps {
                 sh 'mvn test'
             }
         }
-       stage('mvn pkg') {
+
+        stage('Maven Package') {
             steps {
                 sh 'mvn package'
             }
-        }                
+        }
     }
 }
